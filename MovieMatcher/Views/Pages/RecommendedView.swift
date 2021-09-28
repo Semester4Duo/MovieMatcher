@@ -9,7 +9,10 @@ import SwiftUI
 
 struct RecommendedView: View {
     var body: some View {
+        ZStack{
+        BackgroundView()
         Text("Hello, World!")
+        }
     }
 }
 

@@ -9,9 +9,10 @@ import SwiftUI
 
 @main
 struct MovieMatcherApp: App {
+    @StateObject var viewRouter = ViewRouter()
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ContentView(viewRouter: viewRouter)
         }
     }
 }

@@ -8,23 +8,27 @@
 import SwiftUI
 
 struct ContentView: View {
+    @StateObject var viewRouter: ViewRouter
     var body: some View {
-        TabView {
-            SearchView().tabItem {
-                Label("Search", systemImage: "magnifyingglass")
+        GeometryReader{ geometry in
+            VStack{
+                switch viewRouter.currentPage {
+                case .search:
+                    SearchView()
+                case .recommended:
+                    RecommendedView()
+                case .account:
+                    Text("account")
+                case .matches:
+                    MatchView()
+                case .watched:
+                    WatchedView()
+                }
+                Spacer()
+                
+                TabView(viewRouter: viewRouter, geometry: geometry)
             }
-            RecommendedView().tabItem {
-                Label("Recommended", systemImage: "star.fill")
-            }
-            SelectionView().tabItem {
-                Label("", systemImage: "list.dash")
-            }
-            MatchView().tabItem {
-                Label("Matches", systemImage: "heart.fill")
-            }
-            WatchedView().tabItem {
-                Label("Watched", image: "rectangle.stack.fill.badge.play.crop.fill")
-            }
+            .ignoresSafeArea(.all, edges: .bottom)
         }
     }
 }
@@ -33,6 +37,7 @@ struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        ContentView(viewRouter: ViewRouter()).preferredColorScheme(/*@START_MENU_TOKEN@*/.dark/*@END_MENU_TOKEN@*/)
     }
 }
+
