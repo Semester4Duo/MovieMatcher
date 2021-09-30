@@ -8,13 +8,15 @@
 import SwiftUI
 
 struct ItemDetailView: View {
+    let mediaItem:MediaItem
     var body: some View {
+        
         Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
     }
 }
 
-struct ItemDetailView_Previews: PreviewProvider {
-    static var previews: some View {
-        ItemDetailView()
-    }
-}
+//struct ItemDetailView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        ItemDetailView()
+//    }
+//}

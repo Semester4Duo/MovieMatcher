@@ -32,7 +32,7 @@ struct TabView: View {
             TabViewIcon(viewRouter:viewRouter, assignedPage: .watched, width: geometry.size.width/5, height: geometry.size.height/28, systemIconName: "rectangle.stack.fill.badge.play.crop.fill", tabName: "Watched")
         }
         .frame(width: geometry.size.width, height: geometry.size.height/8)
-        .background(Color.black.shadow(radius: 2))
+        .background(Color.black)
     }
 }
 

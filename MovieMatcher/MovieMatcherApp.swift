@@ -10,9 +10,13 @@ import SwiftUI
 @main
 struct MovieMatcherApp: App {
     @StateObject var viewRouter = ViewRouter()
+    
+    let persistenceContainer = PersistenceController.shared
     var body: some Scene {
         WindowGroup {
             ContentView(viewRouter: viewRouter)
+                .environment(\.managedObjectContext,
+                    persistenceContainer.container.viewContext)
         }
     }
 }
