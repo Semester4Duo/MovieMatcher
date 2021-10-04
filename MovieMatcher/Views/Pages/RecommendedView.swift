@@ -12,13 +12,12 @@ struct RecommendedView: View {
     var moc
     @State var runOnce: Bool = true
     
-    @FetchRequest(entity: MediaItem.entity(), sortDescriptors: [])
-    var mediaItems: FetchedResults<MediaItem>
-    
+    @State var movies: MovieResponse = MovieResponse.init(results: [])
     let columns = [
         GridItem(.flexible()),
         GridItem(.flexible())
     ]
+    var Dictonary: NSMutableDictionary = NSMutableDictionary()
     var body: some View {
         ZStack{
             BackgroundView()
@@ -26,26 +25,52 @@ struct RecommendedView: View {
                 RecommendedHeaderView()
                 LazyVGrid(columns: columns, spacing: 12){
                     
-                    ForEach(mediaItems, id: \.self){ mediaItem in
-                        MediaGridItem(mediaItem: mediaItem)
+                    ForEach(movies.results, id: \.self){ movie in
+                        MediaGridItem(mediaItem: movie)
                     }
-//                    if(mediaItems.count < 6){
-//                        ForEach(0..<(6-mediaItems.count)){value in
-//                            GridItemPlaceholder()
-//                        }
-//                    }
                 }
                 .padding()
             }
+        }.onAppear{getMovies(page: 1)}
+    }
+    
+    func getMovies(page:Int16){
+        guard let url = URL(string: "https://moviematcher.kurza.nl/discover/movie/1") else{
+            print("Invalid URL")
+            return
         }
+        
+//        URLSession.shared.dataTask(with: url) { data, _, _ in
+//            let movie = try! JSONDecoder().decode([Movie].self, from: data!)
+//        }
+//        .resume()
+//
+        URLSession.shared.dataTask(with: url) { data, response, error in
+            if let data = data {
+                print("new request")
+                if let decodedResponse = try? JSONDecoder().decode([Movie].self, from: data) {
+                    print(data)
+                    // we have good data – go back to the main thread
+                    DispatchQueue.main.async {
+                        // update our UI
+                        movies.results = decodedResponse
+                    }
+                    // everything is good, so we can exit
+                    return
+                }
+            }
+            // if we're still here it means there was a problem
+            print("Fetch failed: \(error?.localizedDescription ?? "Unknown error")")
+        }
+        .resume()
     }
 }
 
-struct SwiftUIView_Previews: PreviewProvider {
-    static var previews: some View {
-        RecommendedView()
-    }
-}
+//struct SwiftUIView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        RecommendedView()
+//    }
+//}
 
 struct RecommendedHeaderView: View {
     var body: some View {

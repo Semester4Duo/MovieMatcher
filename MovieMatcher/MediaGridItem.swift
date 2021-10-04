@@ -10,7 +10,7 @@ import SwiftUI
 struct MediaGridItem: View {
     @State var showItemDetail: Bool = false
     
-    let mediaItem : MediaItem
+    let mediaItem : Movie
     let imgUrl = "https://image.tmdb.org/t/p/original/"
     
 

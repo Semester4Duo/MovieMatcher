@@ -17,6 +17,7 @@ struct RemoteImage: View {
         var state = LoadState.loading
 
         init(url: String) {
+            print(url)
             guard let parsedURL = URL(string: url) else {
                 fatalError("Invalid URL: \(url)")
             }
@@ -40,20 +41,7 @@ struct RemoteImage: View {
     var loading: Rectangle
     var failure: Rectangle
 
-    @ViewBuilder
     var body: some View {
-        selectImage()
-    }
-
-    init(url: String, title: String, loading: Rectangle = Rectangle(),
-         failure: Rectangle = Rectangle()) {
-        _loader = StateObject(wrappedValue: Loader(url: url))
-        self.loading = loading
-        self.failure = failure
-    }
-
-    @ViewBuilder
-    private func selectImage() -> some View {
         switch loader.state {
         case .loading:
             ZStack{
@@ -65,11 +53,20 @@ struct RemoteImage: View {
             }
         default:
             if let image = UIImage(data: loader.data) {
+                ZStack{
                  Image(uiImage: image)
                     .resizable()
+                }
             } else {
                  failure
             }
         }
+    }
+
+    init(url: String, title: String, loading: Rectangle = Rectangle(),
+         failure: Rectangle = Rectangle()) {
+        _loader = StateObject(wrappedValue: Loader(url: url))
+        self.loading = loading
+        self.failure = failure
     }
 }

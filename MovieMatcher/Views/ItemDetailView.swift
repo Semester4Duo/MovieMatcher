@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ItemDetailView: View {
-    let mediaItem:MediaItem
+    let mediaItem:Movie
     var body: some View {
         
         Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)

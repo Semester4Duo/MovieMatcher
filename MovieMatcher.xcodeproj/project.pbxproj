@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		41072E672709E8150052784E /* MovieApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41072E662709E8150052784E /* MovieApi.swift */; };
 		41AC69BE2701B635003D18E1 /* Styles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41AC69BD2701B635003D18E1 /* Styles.swift */; };
 		41AC69C027027A66003D18E1 /* ViewRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41AC69BF27027A66003D18E1 /* ViewRouter.swift */; };
 		41AC69C22702FEDB003D18E1 /* TabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41AC69C12702FEDB003D18E1 /* TabView.swift */; };
@@ -57,6 +58,7 @@
 /* Begin PBXFileReference section */
 		09184AE60BD625DFE289CABB /* Pods-MovieMatcherTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MovieMatcherTests.release.xcconfig"; path = "Target Support Files/Pods-MovieMatcherTests/Pods-MovieMatcherTests.release.xcconfig"; sourceTree = "<group>"; };
 		163FA573A37062482462586F /* Pods-MovieMatcher-MovieMatcherUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MovieMatcher-MovieMatcherUITests.release.xcconfig"; path = "Target Support Files/Pods-MovieMatcher-MovieMatcherUITests/Pods-MovieMatcher-MovieMatcherUITests.release.xcconfig"; sourceTree = "<group>"; };
+		41072E662709E8150052784E /* MovieApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieApi.swift; sourceTree = "<group>"; };
 		41AC69BD2701B635003D18E1 /* Styles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Styles.swift; sourceTree = SOURCE_ROOT; };
 		41AC69BF27027A66003D18E1 /* ViewRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewRouter.swift; sourceTree = "<group>"; };
 		41AC69C12702FEDB003D18E1 /* TabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TabView.swift; path = MovieMatcher/TabView.swift; sourceTree = SOURCE_ROOT; };
@@ -136,6 +138,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		41072E652709E7F20052784E /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				41072E662709E8150052784E /* MovieApi.swift */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
 		7606EAAF26FDC30F00F83414 = {
 			isa = PBXGroup;
 			children = (
@@ -163,6 +173,7 @@
 		7606EABA26FDC30F00F83414 /* MovieMatcher */ = {
 			isa = PBXGroup;
 			children = (
+				41072E652709E7F20052784E /* Data */,
 				767CE46D27030D6C005AEA65 /* MovieAPI.swift */,
 				7606EAE626FDC43E00F83414 /* Views */,
 				7606EABB26FDC30F00F83414 /* MovieMatcherApp.swift */,
@@ -499,6 +510,7 @@
 				7606EABE26FDC30F00F83414 /* ContentView.swift in Sources */,
 				41AC69D127048954003D18E1 /* RemoteImage.swift in Sources */,
 				41AC69C027027A66003D18E1 /* ViewRouter.swift in Sources */,
+				41072E672709E8150052784E /* MovieApi.swift in Sources */,
 				41AC69BE2701B635003D18E1 /* Styles.swift in Sources */,
 				7606EAF826FDD12000F83414 /* ItemDetailView.swift in Sources */,
 				41AC69C927033A4B003D18E1 /* MovieMatcher.xcdatamodeld in Sources */,
