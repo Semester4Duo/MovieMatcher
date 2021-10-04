@@ -11,6 +11,19 @@ struct MovieResponse: Codable{
     var results: [Movie]
 }
 
+struct MovieItemResponse: Codable{
+    var result: MovieItem
+}
+
+struct MovieMatch: Identifiable ,Codable {
+    var id: Int32
+    var user: UserDTO
+    var group: GroupDTO?
+    var movie: MovieItem
+    var matched: Bool
+    var watched: Bool
+}
+
 struct Movie: Identifiable ,Codable, Hashable{
     var id: Int32
     var poster:String
@@ -18,11 +31,12 @@ struct Movie: Identifiable ,Codable, Hashable{
 }
 struct MovieItem: Codable, Identifiable{
     var id: Int32
+    var genres: String?
     var apiId: Int32
     var poster:String
     var title:String
     var overview: String
-    var releaseData: Date
+    var releaseDate: String
     var runtime: Int16
     var voteCount: Int32
     var voteAverage: Float

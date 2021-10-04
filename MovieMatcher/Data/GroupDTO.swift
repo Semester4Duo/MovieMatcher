@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct GroupDTO: Identifiable ,Codable, Hashable{
+struct GroupDTO: Identifiable ,Codable{
     var id: Int32
     var name:String?
     var members:[UserDTO]?

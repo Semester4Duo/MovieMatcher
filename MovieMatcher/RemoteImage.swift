@@ -11,12 +11,17 @@ struct RemoteImage: View {
     private enum LoadState {
         case loading, success, failure
     }
+
     
     private class Loader: ObservableObject {
+        @FetchRequest(entity: User.entity(), sortDescriptors: [])
+        var currentUser: FetchedResults<User>
+        
         @Published var data = Data()
         var state = LoadState.loading
         
         init(url: String) {
+            print(currentUser.first)
             print(url)
             guard let parsedURL = URL(string: url) else {
                 fatalError("Invalid URL: \(url)")

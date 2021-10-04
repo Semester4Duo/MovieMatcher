@@ -7,10 +7,10 @@
 
 import SwiftUI
 
-struct UserDTO: Identifiable ,Codable, Hashable{
+struct UserDTO: Identifiable ,Codable{
     var id: Int32
     var groups:[GroupDTO]?
     var email:String
     var seriesMatches:String?
-    var movieMatches:String?
+    var movieMatches:[MovieMatch]?
 }

@@ -17,7 +17,7 @@ struct ContentView: View {
     @State var isLoggedIn: Bool = false
     var body: some View {
         GeometryReader{ geometry in
-            if !isLoggedIn && currentUser.isEmpty{
+            if !isLoggedIn || currentUser.isEmpty{
                 LoginView(isLoggedIn: $isLoggedIn)
             }else{
             VStack{
@@ -40,14 +40,6 @@ struct ContentView: View {
             .ignoresSafeArea(.all, edges: .bottom)
             }
         }
-    }
-}
-
-
-
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView(viewRouter: ViewRouter()).preferredColorScheme(/*@START_MENU_TOKEN@*/.dark/*@END_MENU_TOKEN@*/)
     }
 }
 
