@@ -8,8 +8,11 @@
 import SwiftUI
 
 struct LoginView: View {
+    @Environment(\.managedObjectContext)
+    var moc
     @State private var email: String = ""
     @State private var password: String = ""
+    @Binding var isLoggedIn:Bool
     
     var body: some View {
         GeometryReader{ geometry in
@@ -34,7 +37,7 @@ struct LoginView: View {
                             .foregroundColor(.white)
                             
                         
-                        SecureField("password", text: $email)
+                        SecureField("password", text: $password)
                             .placeholder(when: email.isEmpty){
                                 Text("Password")
                                     .foregroundColor(.white)
@@ -48,7 +51,7 @@ struct LoginView: View {
                             .padding(.bottom)
                         
                         Button("Sign in"){
-                            
+                            Login(mail:email)
                         }
                         .frame(width: geometry.size.width - 50, height: 50, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
                         .buttonStyle()
@@ -92,10 +95,45 @@ struct LoginView: View {
             }
         }
     }
-}
-
-struct LoginView_Previews: PreviewProvider {
-    static var previews: some View {
-        LoginView()
+    
+    func Login(mail:String){
+        guard let url = URL(string: "https://moviematcher.kurza.nl/user?email=\(mail)") else{
+            print("Invalid URL")
+            return
+        }
+        
+        URLSession.shared.dataTask(with: url) { data, response, error in
+            if let data = data {
+                print(String(decoding: data, as: UTF8.self))
+                if let decodedResponse = try? JSONDecoder().decode(UserDTO.self, from: data) {
+                    print()
+                    // we have good data – go back to the main thread
+                    DispatchQueue.main.async {
+                        // update our UI
+                        var user: UserDTO  = decodedResponse
+                        
+                        let currentUser = User(context: moc)
+                        currentUser.id = user.id
+                        currentUser.email = user.email
+                        
+                        try? moc.save()
+                        
+                        isLoggedIn = true;
+                        print(user)
+                    }
+                    // everything is good, so we can exit
+                    return
+                }
+            }
+            // if we're still here it means there was a problem
+            print("Fetch failed: \(error?.localizedDescription ?? "Unknown error")")
+        }
+        .resume()
     }
 }
+//
+//struct LoginView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        LoginView(isLoggedIn: Binding<Bool>)
+//    }
+//}

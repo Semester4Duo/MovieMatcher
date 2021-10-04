@@ -14,7 +14,7 @@ struct TabView: View {
     var body: some View {
         HStack{
             TabViewIcon(viewRouter:viewRouter, assignedPage: .search, width: geometry.size.width/5, height: geometry.size.height/28, systemIconName: "magnifyingglass", tabName: "Search")
-            TabViewIcon(viewRouter:viewRouter, assignedPage: .recommended, width: geometry.size.width/5, height: geometry.size.height/28, systemIconName: "star.fill", tabName: "Recommended")
+            TabViewIcon(viewRouter:viewRouter, assignedPage: .recommended, width: geometry.size.width/5, height: geometry.size.height/28, systemIconName: "star.fill", tabName: "Nominations")
             ZStack{
                 Circle()
                     .foregroundColor(.white)

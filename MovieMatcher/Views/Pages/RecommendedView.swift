@@ -10,7 +10,6 @@ import SwiftUI
 struct RecommendedView: View {
     @Environment(\.managedObjectContext)
     var moc
-    @State var runOnce: Bool = true
     
     @State var movies: MovieResponse = MovieResponse.init(results: [])
     let columns = [

@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		41072E672709E8150052784E /* MovieApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41072E662709E8150052784E /* MovieApi.swift */; };
+		41072E6B270B6BE10052784E /* UserDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41072E6A270B6BE10052784E /* UserDTO.swift */; };
+		41072E6D270B73060052784E /* GroupDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41072E6C270B73060052784E /* GroupDTO.swift */; };
 		41AC69BE2701B635003D18E1 /* Styles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41AC69BD2701B635003D18E1 /* Styles.swift */; };
 		41AC69C027027A66003D18E1 /* ViewRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41AC69BF27027A66003D18E1 /* ViewRouter.swift */; };
 		41AC69C22702FEDB003D18E1 /* TabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41AC69C12702FEDB003D18E1 /* TabView.swift */; };
@@ -59,6 +61,8 @@
 		09184AE60BD625DFE289CABB /* Pods-MovieMatcherTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MovieMatcherTests.release.xcconfig"; path = "Target Support Files/Pods-MovieMatcherTests/Pods-MovieMatcherTests.release.xcconfig"; sourceTree = "<group>"; };
 		163FA573A37062482462586F /* Pods-MovieMatcher-MovieMatcherUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MovieMatcher-MovieMatcherUITests.release.xcconfig"; path = "Target Support Files/Pods-MovieMatcher-MovieMatcherUITests/Pods-MovieMatcher-MovieMatcherUITests.release.xcconfig"; sourceTree = "<group>"; };
 		41072E662709E8150052784E /* MovieApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieApi.swift; sourceTree = "<group>"; };
+		41072E6A270B6BE10052784E /* UserDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDTO.swift; sourceTree = "<group>"; };
+		41072E6C270B73060052784E /* GroupDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupDTO.swift; sourceTree = "<group>"; };
 		41AC69BD2701B635003D18E1 /* Styles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Styles.swift; sourceTree = SOURCE_ROOT; };
 		41AC69BF27027A66003D18E1 /* ViewRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewRouter.swift; sourceTree = "<group>"; };
 		41AC69C12702FEDB003D18E1 /* TabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TabView.swift; path = MovieMatcher/TabView.swift; sourceTree = SOURCE_ROOT; };
@@ -142,6 +146,8 @@
 			isa = PBXGroup;
 			children = (
 				41072E662709E8150052784E /* MovieApi.swift */,
+				41072E6A270B6BE10052784E /* UserDTO.swift */,
+				41072E6C270B73060052784E /* GroupDTO.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -515,6 +521,7 @@
 				7606EAF826FDD12000F83414 /* ItemDetailView.swift in Sources */,
 				41AC69C927033A4B003D18E1 /* MovieMatcher.xcdatamodeld in Sources */,
 				7606EAF226FDC69F00F83414 /* WatchedView.swift in Sources */,
+				41072E6B270B6BE10052784E /* UserDTO.swift in Sources */,
 				7606EABC26FDC30F00F83414 /* MovieMatcherApp.swift in Sources */,
 				41AC69CF27048058003D18E1 /* MediaGridItem.swift in Sources */,
 				7606EAF426FDC6C900F83414 /* SelectionView.swift in Sources */,
@@ -523,6 +530,7 @@
 				7606EAF626FDD10600F83414 /* LoginView.swift in Sources */,
 				41AC69D32705BAF1003D18E1 /* GridItemPlaceholder.swift in Sources */,
 				7606EAEC26FDC58400F83414 /* RecommendedView.swift in Sources */,
+				41072E6D270B73060052784E /* GroupDTO.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
