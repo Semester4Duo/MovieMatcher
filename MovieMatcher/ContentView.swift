@@ -17,7 +17,7 @@ struct ContentView: View {
     @State var isLoggedIn: Bool = false
     var body: some View {
         GeometryReader{ geometry in
-            if !isLoggedIn || currentUser.isEmpty{
+            if !isLoggedIn && currentUser.isEmpty{
                 LoginView(isLoggedIn: $isLoggedIn)
             }else{
             VStack{

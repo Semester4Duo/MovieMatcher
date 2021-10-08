@@ -36,7 +36,7 @@ struct MatchView: View {
     }
     
     func getMovies(page:Int16){
-        guard let url = URL(string: "https://moviematcher.kurza.nl/match/movie?userId=3") else{
+        guard let url = URL(string: "https://moviematcher.kurza.nl/match/movie?userId=\(currentUser[0].id)") else{
             print("Invalid URL")
             return
         }
