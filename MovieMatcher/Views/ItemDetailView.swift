@@ -155,24 +155,40 @@ struct MovieDetailView: View {
 
 struct ItemDetailView_Previews: PreviewProvider {
     static var previews: some View {
+        GeometryReader{ geometry in
             ScrollView{
                 VStack{
                     ZStack{
                         Image("walle")
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+        
+            
                         VStack{
-                            
-                            Text("wallee").titleText()
-                            Text("datum troep")
+                            VStack{
+                                
+                                Text("Wall-e")
+                                    .foregroundColor(Color.black)
+                                    .titleText()
+                                    .frame(width: geometry.size.width, alignment: .leading)
+                                    .padding(.leading, 20)
+                                    .padding(.top,5)
+                                Text("datum troep")
+                                    .frame(width: geometry.size.width, alignment: .leading)
+                                    .padding(.leading, 20)
+                                    .foregroundColor(Color.black)
+                                    .padding(.bottom,5)
+                            }.background(.ultraThinMaterial)
                             Spacer()
                             HStack{
                                 Text("match")
                                 Text("viewed")
                             }
-                        }.foregroundColor(.white)
+                        }
+                        .foregroundColor(.white)
                     }
-                    
-                    
                 }
             }
+        }
     }
 }
