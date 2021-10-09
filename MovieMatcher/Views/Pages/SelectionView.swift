@@ -47,8 +47,8 @@ struct Profile: ViewModifier {
     }
     func body(content: Content) -> some View {
         content
-            .colorInvert()
-            .hueRotation(Angle.degrees(Double(self.id.hashValue % 360)))
+        .hueRotation(Angle.degrees(Double(self.id.hashValue % 360)))
+        .colorInvert()
     }
 }
 
