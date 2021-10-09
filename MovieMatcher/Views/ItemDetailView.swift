@@ -14,11 +14,69 @@ struct ItemDetailView: View {
     var currentUser: FetchedResults<User>
     
     @State var movie: MovieItemResponse = MovieItemResponse.init(result: MovieItem(id: 0, apiId: 0, poster: "", title: "", overview: "", releaseDate: "", runtime: 0, voteCount: 0, voteAverage: 0))
+    let imgUrl = "https://image.tmdb.org/t/p/original/"
     
     var body: some View {
-        VStack{
-            
-        }.onAppear{
+        GeometryReader{ geometry in
+            ScrollView{
+                VStack(alignment: .leading){
+                    ZStack{
+                        RemoteImage(url: imgUrl + movie.result.poster, title: movie.result.title)
+                            .aspectRatio(contentMode: .fit)
+                        VStack{
+                            VStack{
+                                
+                                Text(movie.result.title)
+                                    .foregroundColor(Color.white)
+                                    .titleText()
+                                    .frame(width: geometry.size.width, alignment: .leading)
+                                    .padding(.leading, 20)
+                                    .padding(.top,5)
+                                Text(movie.result.releaseDate.components(separatedBy: "T")[0])
+                                    .frame(width: geometry.size.width, alignment: .leading)
+                                    .padding(.leading, 20)
+                                    .foregroundColor(Color.white)
+                                    .padding(.bottom,5)
+                            }
+                            .background(.ultraThinMaterial)
+                            Spacer()
+                            HStack{
+                                Image(systemName: "rectangle.stack.fill.badge.person.crop")
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(width: 40)
+                                    .padding(.trailing, 20)
+                                    .onTapGesture(perform: makeWatched)
+                                Image(systemName: "heart.fill")
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(width: 40)
+                                    .padding(.leading, 20)
+                                    .onTapGesture(perform: makeMatch)
+                            }.padding(.bottom, 40)
+                        }
+                    }
+                    HStack{
+                        Text("Description").titleText().padding(.leading, 20)
+                        Spacer()
+                        ZStack{
+                            Circle().fill(Color("BlackTP")).frame(width: 60, height: 60)
+                            Text(String(format: "%.1f",movie.result.voteAverage).replacingOccurrences(of: ".", with: "")+"%")
+                                .fontWeight(.bold)
+                                .foregroundColor(Color.white)
+                        }
+                        Text("Userscore")
+                            .padding(.trailing, 40)
+                            .foregroundColor(Color.white)
+                    }
+                    Text(movie.result.overview)
+                        .foregroundColor(Color("WhiteTP"))
+                        .frame(width: geometry.size.width-40)
+                        .padding(.leading, 20)
+                }
+            }.background(Color("BlackCoffee"))
+        }
+        .preferredColorScheme(.dark).onAppear{
             getMovie()
         }
     }
@@ -157,7 +215,7 @@ struct ItemDetailView_Previews: PreviewProvider {
     static var previews: some View {
         GeometryReader{ geometry in
             ScrollView{
-                VStack{
+                VStack(alignment: .leading){
                     ZStack{
                         Image("walle")
                             .resizable()
@@ -168,7 +226,7 @@ struct ItemDetailView_Previews: PreviewProvider {
                             VStack{
                                 
                                 Text("Wall-e")
-                                    .foregroundColor(Color.black)
+                                    .foregroundColor(Color.white)
                                     .titleText()
                                     .frame(width: geometry.size.width, alignment: .leading)
                                     .padding(.leading, 20)
@@ -176,19 +234,44 @@ struct ItemDetailView_Previews: PreviewProvider {
                                 Text("datum troep")
                                     .frame(width: geometry.size.width, alignment: .leading)
                                     .padding(.leading, 20)
-                                    .foregroundColor(Color.black)
+                                    .foregroundColor(Color.white)
                                     .padding(.bottom,5)
-                            }.background(.ultraThinMaterial)
+                            }
+                            .background(.ultraThinMaterial)
                             Spacer()
                             HStack{
-                                Text("match")
-                                Text("viewed")
-                            }
+                                Image(systemName: "rectangle.stack.fill.badge.person.crop")
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(width: 40)
+                                    .padding(.trailing, 20)
+                                Image(systemName: "heart.fill")
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(width: 40)
+                                    .padding(.leading, 20)
+                            }.padding(.bottom, 40)
                         }
                         .foregroundColor(.white)
                     }
+                    HStack{
+                        Text("Description").titleText().padding(.leading, 20)
+                        Spacer()
+                        ZStack{
+                            Circle().fill(Color("BlackTP")).frame(width: 60, height: 60)
+                            Text("80%").foregroundColor(Color.white).fontWeight(.bold)
+                        }
+                        Text("Userscore")
+                            .padding(.trailing, 40)
+                            .foregroundColor(Color.white)
+                    }
+                    Text("Lorem ipsum alles d d d d dd d dd d d d dd dd d d d d d dd ddskdfjaldsh daksfh klasfh asdhfkh jsasfaskdfh hlaskdf hhasdkfh kasfhf aksfhkasdhf ksdahf asjdfh k")
+                        .foregroundColor(Color("WhiteTP"))
+                        .frame(width: geometry.size.width-40)
+                        .padding(.leading, 20)
                 }
-            }
+            }.background(Color("BlackCoffee"))
         }
+        .preferredColorScheme(.dark)
     }
 }
